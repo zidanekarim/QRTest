@@ -1,0 +1,34 @@
+{
+  "name": "qrtest",
+  "version": "1.0.0",
+  "description": "Scans QR Codes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThePotatoPowers/QRTest.git"
+  },
+  "keywords": [
+    "qr",
+    "test",
+    "qrtest",
+    "qrscan",
+    "scan"
+  ],
+  "author": "Zidane Karim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThePotatoPowers/QRTest/issues"
+  },
+  "homepage": "https://github.com/ThePotatoPowers/QRTest#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "vercel": "^30.2.2"
+  },
+  "devDependencies": {
+    "html5-qrcode": "^2.3.8"
+  }
+}
