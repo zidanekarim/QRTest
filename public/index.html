@@ -60,6 +60,7 @@
 
         qrInput.addEventListener("keydown", e => {
             if (e.keyCode === 13) {
+                alert("running")
                 const text = qrInput.value;
                 outputData.innerText = text;
                 fetch('/run', {
