@@ -4,10 +4,7 @@ const { parse } = require("csv-parse");
 const fs = require('fs');
 
 
-var names = ['zkarim40@stuy.edu',
-  'zidane.karim@stuypy.org',
-  'zidane.karim@stuysu.org',
-  'zkarim7676@gmail.com'];
+var names = ["zkarim40@stuy.edu", "zidane.karim@stuypy.org", "zkarim7676@gmail.com", "zidane.karim@stuysu.org"]
 
 app.use(express.static(__dirname + '/public'));
 
