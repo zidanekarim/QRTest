@@ -74,7 +74,12 @@
                         return response.json();
                     })
                     .then(data => {
-                        alert(data);
+                        if (data) {
+                            qrInput.value = "True";
+                        }
+                        else {
+                            qrInput.value = "False";
+                        }
                     })
                     .catch(error => {
                         console.log(error);
