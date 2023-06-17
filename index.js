@@ -5,7 +5,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
-const dbURI = process.env.MONGODB_URI;
+const dbURI = process.env.DB_URI;
 
 app.use(express.static(__dirname + '/public'));
 
