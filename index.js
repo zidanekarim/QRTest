@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { parse } = require("csv-parse");
 const fs = require('fs');
-const { Console } = require('console');
+const bodyParser = require('body-parser');
 
 
 var names = ["zkarim40@stuy.edu", "zidane.karim@stuypy.org", "zkarim7676@gmail.com", "zidane.karim@stuysu.org"]
@@ -13,7 +13,8 @@ app.get("/", function(req, res)  {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/run", async (req, res) => {
     // check if req.body's text is in names array. If it is, return true, else return false
