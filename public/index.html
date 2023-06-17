@@ -60,13 +60,12 @@
 
         qrInput.addEventListener("keydown", e => {
             if (e.keyCode === 13) {
-                alert("running")
-                const text = qrInput.value;
-                outputData.innerText = text;
+                const searchText = qrInput.value;
+                outputData.innerText = searchText;
                 fetch('/run', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Referrer-Policy': 'no-referrer-when-downgrade' },
-                    body: JSON.stringify({ text })
+                    body: JSON.stringify({ text:  searchText })
                 })
                     .then(response => {
                         if (!response.ok) {

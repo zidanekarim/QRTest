@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const { parse } = require("csv-parse");
 const fs = require('fs');
+const { Console } = require('console');
 
 
 var names = ["zkarim40@stuy.edu", "zidane.karim@stuypy.org", "zkarim7676@gmail.com", "zidane.karim@stuysu.org"]
@@ -12,30 +13,15 @@ app.get("/", function(req, res)  {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-// read finished.csv and fill names array with the FIRST column of the csv file
-// fs.createReadStream("finished.csv")
-//     .pipe(parse({ delimiter: ',' }))
-//     .on("data", function (dataRow) {
-//         console.log(dataRow[0]);
-//         names.push(dataRow[0]);
-//     })
-//     .on("end", function () {
-//         console.log("done");
-//         console.log(names)
-//     });
-
-
 
 
 app.post("/run", async (req, res) => {
     // check if req.body's text is in names array. If it is, return true, else return false
-    if (names.includes(req.body.text)) {
-        console.log("true")
-        res.send(true);
-    } else {
-        console.log("false")
-        res.send(false);
-    }
+    console.log('GOT HERE');
+    console.log(req.body.text);
+    const searchText = req.body.text;
+    const found = names.includes(searchText);
+    res.send(found);
 });
 
 
