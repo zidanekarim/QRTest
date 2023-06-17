@@ -25,8 +25,8 @@ mongoose.connection.on('open', function (ref) {
   console.log('Connected to mongo server.');
 });
 const paymentSchema = new mongoose.Schema({
-    email: String,
-    paid : Boolean,
+  email: { type: String, index: true },
+  paid: Boolean,
 });
 
 const Payment = mongoose.model("Payment", paymentSchema);
@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/run", async (req, res) => {
   const searchText = req.body.text;
   try {
-    const payment = await Payment.findOne({ email: searchText }).exec();
+    const payment = await Payment.findOne({ email: searchText }).limit(1).exec();
     const found = !!payment; // Converts payment to a boolean value
     res.send(found);
   } catch (err) {
