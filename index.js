@@ -5,7 +5,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
-const dbURI = process.env.DB_URI;
+const dbURI = 'mongodb+srv://VERCEL:VERCEL123@payments.a0wpuhc.mongodb.net/students?retryWrites=true&w=majority'
 
 app.use(express.static(__dirname + '/public'));
 
