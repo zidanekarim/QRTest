@@ -4,8 +4,8 @@ const { parse } = require("csv-parse");
 const fs = require('fs');
 const bodyParser = require('body-parser');
 
-
-var names = ["zkarim40@stuy.edu", "zidane.karim@stuypy.org", "zkarim7676@gmail.com", "zidane.karim@stuysu.org"]
+const mongoose = require('mongoose');
+const dbURI = process.env.MONGODB_URI;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -13,18 +13,42 @@ app.get("/", function(req, res)  {
     res.sendFile(__dirname + "/public/index.html");
 });
 
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("Connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+mongoose.connection.on('open', function (ref) {
+  console.log('Connected to mongo server.');
+});
+const paymentSchema = new mongoose.Schema({
+    email: String,
+    paid : Boolean,
+});
+
+const Payment = mongoose.model("Payment", paymentSchema);
+
+
+
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/run", async (req, res) => {
-    // check if req.body's text is in names array. If it is, return true, else return false
-    console.log('GOT HERE');
-    console.log(req.body.text);
-    const searchText = req.body.text;
-    const found = names.includes(searchText);
+  const searchText = req.body.text;
+  try {
+    const payment = await Payment.findOne({ email: searchText }).exec();
+    const found = !!payment; // Converts payment to a boolean value
     res.send(found);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
 });
-
 
 
 
