@@ -3,7 +3,11 @@ const app = express();
 const { parse } = require("csv-parse");
 const fs = require('fs');
 
-var names = [];
+
+var names = ['zkarim40@stuy.edu',
+  'zidane.karim@stuypy.org',
+  'zidane.karim@stuysu.org',
+  'zkarim7676@gmail.com'];
 
 app.use(express.static(__dirname + '/public'));
 
@@ -12,16 +16,16 @@ app.get("/", function(req, res)  {
 });
 
 // read finished.csv and fill names array with the FIRST column of the csv file
-fs.createReadStream("finished.csv")
-    .pipe(parse({ delimiter: ',' }))
-    .on("data", function (dataRow) {
-        console.log(dataRow[0]);
-        names.push(dataRow[0]);
-    })
-    .on("end", function () {
-        console.log("done");
-        console.log(names)
-    });
+// fs.createReadStream("finished.csv")
+//     .pipe(parse({ delimiter: ',' }))
+//     .on("data", function (dataRow) {
+//         console.log(dataRow[0]);
+//         names.push(dataRow[0]);
+//     })
+//     .on("end", function () {
+//         console.log("done");
+//         console.log(names)
+//     });
 
 
 
