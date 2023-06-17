@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/ThePotatoPowers/QRTest#readme",
   "dependencies": {
+    "csv-parse": "^5.4.0",
     "express": "^4.18.2",
     "vercel": "^30.2.2"
   },
