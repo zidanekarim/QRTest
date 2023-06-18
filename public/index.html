@@ -75,10 +75,18 @@
                     })
                     .then(data => {
                         if (data) {
-                            alert("true")
+                            // change the screen to green and show a checkmark, reverting afterward. 
+                            document.body.style.backgroundColor = "green";
+                            setTimeout(() => {
+                                document.body.style.backgroundColor = "black";
+                            }, 5000);
+
                         }
                         else {
-                            alert("false")
+                            document.body.style.backgroundColor = "red";
+                            setTimeout(() => {
+                                document.body.style.backgroundColor = "black";
+                            }, 5000);
                         }
                     })
                     .catch(error => {
