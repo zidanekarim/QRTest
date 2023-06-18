@@ -3,10 +3,11 @@ const app = express();
 const { parse } = require("csv-parse");
 const fs = require('fs');
 const bodyParser = require('body-parser');
-
+const dotenv = require('dotenv');
+dotenv.config();
 const mongoose = require('mongoose');
-const dbURI = 'mongodb+srv://VERCEL:VERCEL123@payments.a0wpuhc.mongodb.net/students?retryWrites=true&w=majority'
-
+// pull in the database URI from the .env file in 
+const dbURI = process.env.DB_URI;
 app.use(express.static(__dirname + '/public'));
 
 app.get("/", function(req, res)  {
