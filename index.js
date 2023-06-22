@@ -42,11 +42,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/run", async (req, res) => {
   const searchText = req.body.text;
   try {
-    const payment = await Payment.findOne({ email: searchText }).limit(1).exec();
+    const payment = await Payment.findOne({ code: searchText }).limit(1).exec();
     // delete this entry from the database if it is found
     if (payment) {
       await payment.deleteOne();
-      
     }
 
 
