@@ -43,6 +43,13 @@ app.post("/run", async (req, res) => {
   const searchText = req.body.text;
   try {
     const payment = await Payment.findOne({ email: searchText }).limit(1).exec();
+    // delete this entry from the database if it is found
+    if (payment) {
+      await payment.deleteOne();
+      
+    }
+
+
     const found = !!payment; // Converts payment to a boolean value
     res.send(found);
   } catch (err) {
